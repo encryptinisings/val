@@ -8,27 +8,32 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    // Server settings
+    $mail->SMTPDebug = 0;  // Disable debug output
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';                       //gmail SMTP server set to send through
+    $mail->Host       = 'smtp.office365.com';  // Correct Outlook SMTP server
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'user@example.com';                     //SMTP username (your gmail account)
-    $mail->Password   = 'secret';                               //SMTP password (your gmail password or app password)
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = 465;
+    $mail->Username   = 'vblairsh@outlook.com';  // Your Outlook email
+    $mail->Password   = 'Nafim@2012';  // Be careful with hardcoded passwords!
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Outlook requires STARTTLS
+    $mail->Port       = 587;  // Outlook requires port 587 with STARTTLS
 
-    //Recipients
-    $mail->setFrom('from@example.com', 'Mailer');         //Set the sender of the message (your email address)
-    $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient (your bae's email address)
+    // Recipients
+    $mail->setFrom('vblairsh@outlook.com', 'Nafim / Zuriins');  // Your name as sender
+    $mail->addAddress('sexy.niiiico@gmail.com', 'Nicole <3');  
 
-    //Content
+    // Content
     $mail->isHTML(true);
     $mail->Subject = 'I Love You';
-    $mail->Body    = 'Happy Valentine Day My Love. I love you so much. You are the best thing that has ever happened to me ❤';
+    $mail->Body    = 'Happy Valentine\'s Day, my best friend, I love you so much. 
+                      You are the best thing that has ever happened to me, so that is why I need to explain something. 
+                      You see, I have grown feelings for you, and I wish to have a lifetime relationship with you, but that won’t last because it’s online. 
+                      But would you like to be my girlfriend on this Fine Friday? If you do not want to, it is fine. 
+                      All I ask is for a week, and if you deny, I hope we can return as friends after this. ❤';
 
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+?>
