@@ -20,7 +20,7 @@ try {
 
     // Recipients
     $mail->setFrom('vblairsh@outlook.com', 'Nafim / Zuriins');  // Your name as sender
-    $mail->addAddress('sexy.niiiico@gmail.com', 'Nicole <3');  
+    $mail->addAddress('projectnafim@outlook.com', 'Nicole <3');  
 
     // Content
     $mail->isHTML(true);
